@@ -1,32 +1,43 @@
     const fetch = require('node-fetch');
 
     (async () => {
-    const response = await fetch('https://trefle.io/api/v1/plants?token=ZWEVXNJFwXLOVFaAzlGwesIAAC8Y-F6dRuQ1M1cUo8Q');
+    const response = await fetch('https://trefle.io/api/v1/plants?token=ZWEVXNJFwXLOVFaAzlGwesIAAC8Y-F6dRuQ1M1cUo8Q&page=2');
     const json = await response.json();
     console.log(json);
-})();
+    })();
+
+
+function plantInformationHTML(plants) {
+    return `
+        <h2>${plants.name}
+            <span>
+                (<a href="${plants.html_url}" target="_blank">${plants}</a>)
+            </span>
+        </h2>`;
+}
+
 
 function fetchTrefleInformation(event){
     var plantname = $("#plant-name").val();
     if (!plantname){
-        $("#tf-plant-data").html(`<h3>Please enter a plant name</h3>`);
+        $("#tf-plants-data").html(`<h3>Please enter a plant name</h3>`);
         return;
     }
-        $("#tf-plant-data").html(
+        $("#tf-plants-data").html(
             `<div id="loader">
             <img src="assets/loader.gif" alt="loading..." />
         </div>`);
 
 
 $.when(
-    $.getJSON('https://trefle.io/api/v1/plants?token=ZWEVXNJFwXLOVFaAzlGwesIAAC8Y-F6dRuQ1M1cUo8Q/${plantname}')
+    $.getJSON('https://trefle.io/api/v1/plants?token=ZWEVXNJFwXLOVFaAzlGwesIAAC8Y-F6dRuQ1M1cUo8Q&page=2/${plantname}')
 ).then(
     function(response) {
         var plantData = response;
-        $(`#tf-plant-data`).html(plantInformationHTML(plantData));
+        $(`#tf-plants-data`).html(plantInformationHTML(plantData));
     }, function(errorResponse) {
         if (errorResponse.status === 404) {
-            $(`#tf-plant-data`).html(
+            $(`#tf-plants-data`).html(
                 `<h3>No info found for plant ${plantname}</h3>`)
         } else {
             console.log(errorResponse);
