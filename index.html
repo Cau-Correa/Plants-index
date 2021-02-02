@@ -15,23 +15,26 @@
 
 </head>
 <body>
-<section id="banner-message">
-    <div class="container-fluid">
+<section>
+    <div class="container-fluid home-container">
         <div class="row">
-            <div class="col-12 col-md-4">
-                <div class="">
+            <div class="col-12" id="title">
+                <h1 class="title-name">Plant Index</h1>
+            </div>
+            <div class="col-12 col-md-4 container-fluid">
+                <div id="banner-message">
                     <h2>Plant Finder</h2>
                 </div>
                 <div class="">
-                    <input type="text" id="plant-name" value="Plant name"oninput="fetchTrefleInformation()" />
-                    <div id="tf-plants-data"></div>
-                  
+                    <input type="text" id="plant-name" value="Plant name" oninput="fetchTrefleInformation()">
+                    <div id="tf-plants-data">
+                    </div>     
                 </div>
-
             </div>
         </div>
     </div>
-</section>
+
+</section>   
 
 </body>
 </html>
