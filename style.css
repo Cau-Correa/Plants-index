@@ -1,17 +1,17 @@
 body {
-  padding: 0;
   font-family: Helvetica;
 }
 
 #banner-message {
   background: #fff;
   border-radius: 4px;
-  padding: 20px;
+
   font-size: 25px;
   text-align: center;
   transition: all 0.2s;
   margin: 0 auto;
   padding: 0;
+
 }
 
 .home-container {
@@ -24,7 +24,7 @@ body {
 }
 
 #title {
-    margin-top: 10%;
+    margin-top: 5%;
     padding-left: 5%;
 }
 
