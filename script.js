@@ -1,3 +1,4 @@
+//Rendering Trefle data
 function plantInformationHTML(plants) {
   return `
         <h2>${plants.name}
@@ -7,7 +8,7 @@ function plantInformationHTML(plants) {
         </h2>`;
 }
 
-
+// Initial settup of data retrieval
 function fetchTrefleInformation(event) {
   var plantname = $("#plant-name").val();
   if (!plantname) {
@@ -19,7 +20,7 @@ function fetchTrefleInformation(event) {
             <img src="assets/loader.gif" alt="loading..." />
         </div>`);
 
-
+// JQuery promisses to retrieve information from the API
   $.when(
     $.getJSON('https://trefle.io/api/v1/plants?token=ZWEVXNJFwXLOVFaAzlGwesIAAC8Y-F6dRuQ1M1cUo8Q&page=2/${plantname}')
   ).then(
